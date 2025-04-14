@@ -18,9 +18,8 @@ SYSCALL_DEFINE2(get_task_info, char __user *, buffer, size_t, length) {
         offset += snprintf(kbuffer + offset, sizeof(kbuffer) - offset,
         "PID: %d | Nombre: %s | Estado: %d \n",task->pid, task->comm,
         task_state_index(task));
-        if (offset >= sizeof(kbuffer)) // Evita sobrepasar el tamaño del
-            buffer
-        break;
+        if (offset >= sizeof(kbuffer)) // Evita sobrepasar el tamaño del buffer
+            break;
         printk(KERN_INFO "PID: %d | Nombre: %s\n", task->pid, task->comm);
     }
     // Copia la información al espacio de usuario
@@ -42,7 +41,8 @@ SYSCALL_DEFINE2(get_threads_info, char __user *, buffer, size_t, length) {
 
     for_each_process(task) {
         offset += snprintf(kbuffer + offset, 2048 - offset,
-        "Proceso: %s (PID: %d)\n", task->comm, task->pid);
+            "Proceso: %s (PID: %d)\n", task->comm, task->pid);
+        
         for_each_thread(task, thread) {
             offset += snprintf(kbuffer + offset, 2048 - offset,
                 " ├── Hilo: %s (TID: %d)\n", thread->comm,
