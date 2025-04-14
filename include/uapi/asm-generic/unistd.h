@@ -852,9 +852,17 @@ __SYSCALL(__NR_removexattrat, sys_removexattrat)
 #define __NR_open_tree_attr 467
 __SYSCALL(__NR_open_tree_attr, sys_open_tree_attr)
 
-#undef __NR_syscalls
-#define __NR_syscalls 468
+#define __NR_set_mempolicy_home_node 468
+__SYSCALL(__NR_set_mempolicy_home_node, sys_set_mempolicy_home_node)
+#define __NR_my_sys_call 469
+__SYSCALL(__NR_my_sys_call, sys_my_sys_call)
+#define __NR_get_task_info 470
+__SYSCALL(__NR_get_task_info, sys_get_task_info)
+#define __NR_get_threads_info 471
+__SYSCALL(__NR_get_threads_info, sys_get_threads_info)
 
+#undef __NR_syscalls
+#define __NR_syscalls 472
 /*
  * 32 bit systems traditionally used different
  * syscalls for off_t and loff_t arguments, while
